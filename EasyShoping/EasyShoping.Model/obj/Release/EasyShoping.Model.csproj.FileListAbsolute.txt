@@ -1,0 +1,9 @@
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EasyShoping.Model.dll.config
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EasyShoping.Model.dll
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EasyShoping.Model.pdb
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EntityFramework.dll
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EntityFramework.SqlServer.dll
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EntityFramework.xml
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\bin\Release\EntityFramework.SqlServer.xml
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\obj\Release\EasyShoping.Model.dll
+F:\2015\EasyShoping\EasyShoping\EasyShoping.Model\obj\Release\EasyShoping.Model.pdb

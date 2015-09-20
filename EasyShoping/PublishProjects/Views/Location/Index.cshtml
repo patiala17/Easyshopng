@@ -1,0 +1,71 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Locations list";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section pageName {
+      <li class="active">@ViewBag.Title</li>
+}
+
+<!-- Bordered table -->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h6 class="panel-title"><i class="icon-users2"></i>@ViewBag.Title   </h6><a href="@Url.Action("Create","Location")" > <input type="reset" value="Add New"  class="btn btn-default"></a>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Location code</th>
+                    <th>IsActive</th>
+                    <th>Last update</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                     @foreach (var item in ViewBag.List)
+                     {
+                         <tr >
+                             <td >
+                               @item.LocationName
+                             </td>
+                             <td>
+                                 @item.LocationCode
+                             </td>
+                             <td>
+                                 @item.IsActive
+                             </td>
+                             <td>
+                                 @item.LastUpdate
+                             </td>
+                          
+                             
+                                 <td class="text-center"><div class="btn-group">
+                        <button type="button" class="btn btn-icon btn-success dropdown-toggle" data-toggle="dropdown"><i class="icon-cog4"></i></button>
+                        <ul class="dropdown-menu icons-right dropdown-menu-right">
+                          <li><a href="@Url.Action("Edit","Location",new { id = item.ID })"><i class="icon-quill2"></i> Edit</a></li>
+                          <li><a href="#" onclick="return Delete('Location/Delete',@item.ID,this);"><i class="icon-remove2"></i> Delete</a></li>
+                      
+                        </ul>
+                      </div></td>
+                         </tr>
+                        }
+                </tbody>
+              </table>
+                <table  class="table table-bordered">
+                    <tr>
+                        <td>
+                            @Html.PagedListPager(
+                (IPagedList)ViewBag.List, page =>
+                    Url.Action("Index", new { page }))
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+          </div>
+ <!-- /bordered table -->
+

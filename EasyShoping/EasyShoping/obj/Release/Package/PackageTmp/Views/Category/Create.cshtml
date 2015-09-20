@@ -1,0 +1,40 @@
+﻿@model EasyShoping.Model.CategoryModel
+@{
+    ViewBag.Title = "Create Category ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section pageName {
+      <li class="active">@ViewBag.Title</li>
+}
+@using (@Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal validate" }))
+{
+    
+<div class="block">
+    @Html.ValidationSummary(false)
+                <h6 class="heading-hr"><i class="icon-user-plus3"></i>@ViewBag.Title:</h6>
+                <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Name</label>
+                      
+                        @Html.TextBoxFor(m=>m.Name, new { @class= "required form-control"})
+                          @Html.ValidationMessageFor(m => m.Name)
+                      </div>
+                      <div class="col-md-6">
+                        <label>Detail</label>
+                        @Html.TextBoxFor(m=>m.Detail, new { @class= "form-control"})
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+               
+                <div class="text-right">
+                    @Html.LabelFor(m => m.IsActive) 
+                     @Html.CheckBoxFor(m => m.IsActive, new { @class= "styled"})
+                  <input type="reset" value="Cancel" onclick="goBack();" class="btn btn-default">
+                  <input type="submit" value="Save" class="btn btn-primary">
+                </div>
+              </div>
+}

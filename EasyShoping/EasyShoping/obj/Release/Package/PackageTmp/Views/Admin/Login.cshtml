@@ -1,0 +1,43 @@
+﻿@model EasyShoping.Models.LoginModel
+@{
+    ViewBag.Title = "Login:-eShop Back Office";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+ 
+
+
+@using (@Html.BeginForm("Login", "Admin"))
+{
+    @Html.ValidationSummary(true, "Login failed. Check your login details."); 
+    <div class="popup-header"><a href="#" class="pull-left"><i class="icon-user-plus"></i></a><span class="text-semibold">Login</span>
+
+    </div>
+    <div class="well">
+      <div class="form-group has-feedback">
+        <label>Username</label>
+        @*<input type="text" class="form-control" placeholder="Username">*@
+             @Html.TextBoxFor(m=>m.UserName, new { @class= "required form-control"})
+                          @Html.ValidationMessageFor(m => m.UserName)
+
+        <i class="icon-users form-control-feedback"></i></div>
+      <div class="form-group has-feedback">
+        <label>Password</label>
+         @Html.PasswordFor(m=>m.Password, new { @class= "required form-control"})
+        <i class="icon-lock form-control-feedback"></i></div>
+      <div class="row form-actions">
+        <div class="col-xs-6">
+          @*<div class="checkbox checkbox-success">
+            <label>
+              <input type="checkbox" class="styled">
+              Remember me</label>
+          </div>*@
+        </div>
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-warning pull-right"><i class="icon-menu2"></i> Sign in</button>
+        </div>
+      </div>
+    </div>
+}
+
+<!-- /login wrapper -->

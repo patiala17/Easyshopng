@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - eShop Back Office</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="@Url.Content("~/Content/themes/Admin/css/bootstrap.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/themes/Admin/css/londinium-theme.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/themes/Admin/css/styles.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/themes/Admin/css/icons.min.css")" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/charts/sparkline.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/uniform.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/select2.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/inputmask.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/autosize.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/inputlimit.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/listbox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/multiselect.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/tags.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/switch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/uploader/plupload.full.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/uploader/plupload.queue.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/wysihtml5/wysihtml5.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/forms/wysihtml5/toolbar.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/daterangepicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/fancybox.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/moment.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/jgrowl.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/datatables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/colorpicker.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/fullcalendar.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/timepicker.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/plugins/interface/collapsible.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/themes/Admin/js/application.js")"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="@Url.Content("~/jsSystem/CallPages.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+    <meta name="viewport" content="width=device-width" />
+    @*@Styles.Render("@Url.Content("~/Content/css")
+        @Scripts.Render("@Url.Content("~/bundles/modernizr")*@
+</head>
+<body class="sidebar-wide">
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                eShop Back Office</a><a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons"><span class="sr-only">Toggle navbar</span><i class="icon-grid3"></i></button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar"><span class="sr-only">Toggle navigation</span><i class="icon-paragraph-justify2"></i></button>
+        </div>
+        <ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
+         
+            <li class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
+                @*<img src="~/Content/themes/Admin/images/demo/users/face1.png" alt="">*@<span>Welcome Admin</span><i class="caret"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right icons-right">
+                    @*  <li><a href="#"><i class="icon-user"></i>Profile</a></li>
+                    <li><a href="#"><i class="icon-bubble4"></i>Messages</a></li>
+                    <li><a href="#"><i class="icon-cog"></i>Settings</a></li>*@
+                    <li><a href="@Url.Action("Logout", "Admin")"><i class="icon-exit"></i>Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Sidebar -->
+        <div class="sidebar collapse">
+            <div class="sidebar-content">
+                <!-- User dropdown -->
+                @*<div class="user-menu dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Content/themes/Admin/images/demo/users/face3.png" alt="">
+                        <div class="user-info">Madison Gartner <span>Web Developer</span></div>
+                    </a>
+                    <div class="popup dropdown-menu dropdown-menu-right">
+                        <div class="thumbnail">
+                            <div class="thumb">
+                                <img alt="" src="~/Content/themes/Admin/images/demo/users/face3.png">
+                                <div class="thumb-options"><span><a href="#" class="btn btn-icon btn-success"><i class="icon-pencil"></i></a><a href="#" class="btn btn-icon btn-success"><i class="icon-remove"></i></a></span></div>
+                            </div>
+                            <div class="caption text-center">
+                                <h6>Madison Gartner <small>Front end developer</small></h6>
+                            </div>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="icon-pencil3 text-muted"></i>My posts <span class="label label-success">289</span></li>
+                            <li class="list-group-item"><i class="icon-people text-muted"></i>Users online <span class="label label-danger">892</span></li>
+                            <li class="list-group-item"><i class="icon-stats2 text-muted"></i>Reports <span class="label label-primary">92</span></li>
+                            <li class="list-group-item"><i class="icon-stack text-muted"></i>Balance
+              <h5 class="pull-right text-danger">$45.389</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>*@
+                <!-- /user dropdown -->
+                <!-- Main navigation -->
+                <ul class="navigation">
+                    <li ><a href="#"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+                   
+                    <li><a href="#" class="expand"><span>Manage User</span> <i class="icon-user"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Create","User")" >New User</a></li>
+                            <li><a href="@Url.Action("Index","User")" >User list</a></li>
+                        </ul>
+                    </li>
+                  <li><a href="#" class="expand"><span>Manage Products</span> <i class="icon-tree"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Create","Product")" >New Product</a></li>
+                            <li><a href="@Url.Action("Index","Product")" >Products list</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="#" class="expand"><span>Manage Locations</span> <i class="icon-location2"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Create","Location")" >New Location</a></li>
+                            <li><a href="@Url.Action("Index","Location")" >Locations list</a></li>
+                            
+                        </ul>
+                    </li>
+                      <li><a href="#" class="expand"><span>Brand</span> <i class="icon-console"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Create","Brand")" >New Brand</a></li>
+                            <li><a href="@Url.Action("Index","Brand")" >Brand list</a></li>
+                            
+                        </ul>
+                    </li>
+                      <li><a href="#" class="expand"><span>Category</span> <i class="icon-tree"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("Create","Category")" >New Category</a></li>
+                            <li><a href="@Url.Action("Index","Category")" >Category list</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Logout","Admin")" ><span>Logout</span> <i class="icon-exit3"></i></a></li>
+                </ul>
+                <!-- /main navigation -->
+            </div>
+        </div>
+        <!-- /sidebar -->
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Page header -->
+            @*<div class="page-header">
+                <div class="page-title">
+                    <h3>Dashboard 
+                        <small>Welcome Eugene. 12 hours since last visit</small>
+                    </h3>
+                </div>
+                <div id="reportrange" class="range">
+                    <div class="visible-xs header-element-toggle"><a class="btn btn-primary btn-icon"><i class="icon-calendar"></i></a></div>
+                    <div class="date-range"></div>
+                    <span class="label label-danger">9</span>
+                </div>
+            </div>*@
+            <!-- /page header -->
+            <!-- Breadcrumbs line -->
+            <div class="breadcrumb-line">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Location")">Home</a></li>
+                    @RenderSection("pageName", required: false)
+                </ul>
+                <div class="visible-xs breadcrumb-toggle"><a class="btn btn-link btn-lg btn-icon" data-toggle="collapse" data-target=".breadcrumb-buttons"><i class="icon-menu2"></i></a></div>
+                @*<ul class="breadcrumb-buttons collapse">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-search3"></i><span>Search</span> <b class="caret"></b></a>
+                        <div class="popup dropdown-menu dropdown-menu-right">
+                            <div class="popup-header"><a href="#" class="pull-left"><i class="icon-paragraph-justify"></i></a><span>Quick search</span><a href="#" class="pull-right"><i class="icon-new-tab"></i></a></div>
+                            <form action="#" class="breadcrumb-search">
+                                <input type="text" placeholder="Type and hit enter..." name="search" class="form-control autocomplete">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="radio">
+                                            <input type="radio" name="search-option" class="styled" checked="checked">
+                                            Everywhere</label>
+                                        <label class="radio">
+                                            <input type="radio" name="search-option" class="styled">
+                                            Invoices</label>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="radio">
+                                            <input type="radio" name="search-option" class="styled">
+                                            Users</label>
+                                        <label class="radio">
+                                            <input type="radio" name="search-option" class="styled">
+                                            Orders</label>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-block btn-success" value="Search">
+                            </form>
+                        </div>
+                    </li>
+                    <li class="language dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Content/themes/Admin/images/flags/german.png" alt="">
+                        <span>German</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu dropdown-menu-right icons-right">
+                            <li><a href="#">
+                                <img src="~/Content/themes/Admin/images/flags/ukrainian.png" alt="">
+                                Ukrainian</a></li>
+                            <li class="active"><a href="#">
+                                <img src="~/Content/themes/Admin/images/flags/english.png" alt="">
+                                English</a></li>
+                            <li><a href="#">
+                                <img src="~/Content/themes/Admin/images/flags/spanish.png" alt="">
+                                Spanish</a></li>
+                            <li><a href="#">
+                                <img src="~/Content/themes/Admin/images/flags/german.png" alt="">
+                                German</a></li>
+                            <li><a href="#">
+                                <img src="~/Content/themes/Admin/images/flags/hungarian.png" alt="">
+                                Hungarian</a></li>
+                        </ul>
+                    </li>
+                </ul>*@
+            </div>
+            <!-- /breadcrumbs line -->
+            @RenderBody()
+            <!-- /page tabs -->
+            <!-- Footer -->
+            @Html.Partial("_FooterPartial")
+            <!-- /footer -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+    @Scripts.Render("~/bundles/knockout")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

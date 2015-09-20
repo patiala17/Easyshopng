@@ -1,0 +1,14 @@
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\Data.Context.dll.config
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\Data.Context.dll
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\Data.Context.pdb
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EasyShoping.Model.dll
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EntityFramework.dll
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EntityFramework.SqlServer.dll
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EasyShoping.Model.pdb
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EntityFramework.xml
+F:\2015\EasyShoping\EasyShoping\Data.Context\bin\Release\EntityFramework.SqlServer.xml
+F:\2015\EasyShoping\EasyShoping\Data.Context\obj\Release\Data.Context.csprojResolveAssemblyReference.cache
+F:\2015\EasyShoping\EasyShoping\Data.Context\obj\Release\Data.Context.Migrations.Initial.resources
+F:\2015\EasyShoping\EasyShoping\Data.Context\obj\Release\Data.Context.csproj.GenerateResource.Cache
+F:\2015\EasyShoping\EasyShoping\Data.Context\obj\Release\Data.Context.dll
+F:\2015\EasyShoping\EasyShoping\Data.Context\obj\Release\Data.Context.pdb

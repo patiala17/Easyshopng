@@ -1,0 +1,383 @@
+﻿@model EasyShoping.Model.ProductModel
+@{
+    ViewBag.Title = "Create Product ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+ <script type="text/javascript" src="@Url.Content("~/Content/UploadifyContent/jquery.uploadify.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/UploadifyContent/jquery.uploadify.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js")"></script>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/UploadifyContent/uploadify.css")" />
+<style>
+    .cancel {
+    background: url('../Content/UploadifyContent/uploadify-cancel.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+    color:red;
+	width: 16px;
+    }
+</style>
+
+@section pageName {
+      <li class="active">@ViewBag.Title</li>
+}
+@using (@Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal validate" }))
+{
+    
+<div class="block">
+    @Html.ValidationSummary(false)
+                <h6 class="heading-hr"><i class="icon-user-plus3"></i>@ViewBag.Title:</h6>
+                <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Name</label>
+                      
+                        @Html.TextBoxFor(m=>m.ProductName, new { @class= "required form-control"})
+                          @Html.ValidationMessageFor(m => m.ProductName)
+                      </div>
+                      <div class="col-md-6">
+                        <label>Product Code</label>
+                        @Html.TextBoxFor(m=>m.ProductCode, new { @class= "form-control"})
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+     <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Standard Cost</label>
+                      
+                        @Html.TextBoxFor(m=>m.StandardCost, new { @class= "required form-control"})
+                          @Html.ValidationMessageFor(m => m.StandardCost)
+                      </div>
+                      <div class="col-md-6">
+                        <label>Sale Price</label>
+                        @Html.TextBoxFor(m=>m.ListPrice, new { @class= "form-control"})
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                 <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Location</label>
+                      
+                        @Html.DropDownListFor(m => m.LocationCode, (IEnumerable<SelectListItem>)ViewBag.Locations, new  {@class="required select-full" })
+                      </div>
+                      <div class="col-md-6">
+                        <label>Brand</label>
+                         @Html.DropDownListFor(m => m.BrandID, (IEnumerable<SelectListItem>)ViewBag.Brands, new  {@class="required select-full" })
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+       <div class="block-inner">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Category</label>
+                      
+                        @Html.DropDownListFor(m => m.CategoryID, (IEnumerable<SelectListItem>)ViewBag.Categorys, new  {@class="required select-full" })
+                      </div>
+                      <div class="col-md-6">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+    <div class="block-inner">
+        <div class="form-group">
+            <label>Short Description</label>
+            @Html.TextAreaFor(m => m.ShortDescription, new { @class = "limited form-control" })
+        </div>
+    </div>
+
+    <div class="block-inner">
+        <div class="form-group">
+            <label>Full Description</label>
+            @Html.TextAreaFor(m => m.FullDescription, new { @class = "limited form-control" })
+        </div>
+    </div>
+                <div class="text-right">
+                     @Html.LabelFor(m => m.IsActive) 
+                     @Html.CheckBoxFor(m => m.IsActive, new { @class= "styled"})
+                  <input type="reset" value="Cancel" onclick="goBack();" class="btn btn-default">
+                  <input type="submit" value="Save" class="btn btn-primary">
+                </div>
+              </div>
+}
+
+   <!-- Page tabs -->
+    <div class="tabbable page-tabs">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#activity" data-toggle="tab"><i class="icon-file"></i> Photos<span class="label label-danger"> @Enumerable.Count(ViewBag.Images)</span></a></li>
+        <li><a href="#contacts" data-toggle="tab"><i class="icon-accessibility"></i> Videos <span class="label label-danger"> @Enumerable.Count(ViewBag.Videos)</span></a></li>
+      
+      </ul>
+      <div class="tab-content">
+        <!-- First tab -->
+        <div class="tab-pane active fade in" id="activity">
+         
+            <div>
+                Click Select files to upload files.
+        <input type="file" name="file_upload" id="file_upload" />
+                <input type="button" id="btnImageUpload" value="Upload"  style="display:none"/>
+            </div>
+            <div class="table-responsive">
+                <table id="uploaded" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in ViewBag.Images)
+                    { 
+                        <tr>
+                            <td style="display: none">@item.ID</td>
+                            <td>
+                                <img src="@Url.Content("~\\Content\\ProductImages\\"+@item.ImageURL)" alt='Uploaded Image' style="width:200px;height:200px" />
+                            </td>
+                            <td style="vertical-align: top">
+                                <input type="text" id="txtName@{@item.ID}" value="@item.Name" /></td>
+                            <td style="vertical-align: top">
+                                <input type="button" value="[X]" onclick='deleteImage(@item.ID,this)' />&nbsp;
+            <input type="button" value="Update" onclick='updateImage(@item.ID)' />
+                            </td>
+                        </tr>
+         }
+                </table>
+            </div>
+        </div>
+        <!-- /first tab -->
+        <!-- Second tab -->
+        <div class="tab-pane fade" id="contacts">
+          <!-- Contacts -->
+          <div class="block">
+           <div>
+                Click Select files to upload files.
+        <input type="file" name="file_uploadVideos" id="file_uploadVideos" />
+                <input type="button" id="btnVideosUpload" value="Upload" style="display:none"/>
+            </div>
+            <div class="table-responsive">
+                <table id="uploadedVideos" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in ViewBag.Videos)
+                    { 
+                        <tr>
+                            <td style="display: none">@item.ID</td>
+                            <td>
+                               @* <img src="@Url.Content("~\\Content\\ProductVidoesImages\\"+@item.ImageURL)" alt="Uploaded Image" style="width:200px;height:200px" />*@
+                                <video width="320" height="240" controls>
+                                    <source src="@Url.Content("~\\Content\\ProductVidoes\\"+@item.VideoURL)" type="video/mp4">
+                                   @* <source src="movie.ogg" type="video/ogg">*@
+                                    Your browser does not support the video tag.
+                                </video>
+                            </td>
+                            <td style="vertical-align: top">
+                                <input type="text" id="txtVName@{@item.ID}" value="@item.Name" /></td>
+                            <td style="vertical-align: top">
+                                <input type="button" value="[X]" onclick='deleteVideo(@item.ID,this)' />&nbsp;
+            <input type="button" value="Update" onclick='updateVideo(@item.ID)' />
+                            </td>
+                        </tr>
+         }
+                </table>
+            </div>
+          </div>
+          <!-- contacts -->
+        </div>
+        <!-- /second tab -->
+       
+      </div>
+    </div>
+    <!-- /page tabs -->
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#file_upload').uploadify({
+            'swf': "@Url.Content("~/Content/UploadifyContent/uploadify.swf")",
+            'cancelImg': "@Url.Content("~/Content/UploadifyContent/uploadify-cancel.png")",
+            'buttonText' : 'Select images',
+            'fileExt': '*.jpg;*.jpeg;*.gif;*.png',
+            'multi': true,
+            'auto': true,
+            'sizeLimit': 999999999,
+            'uploader': "@Url.Action("Upload", "Product")",
+            'onUploadSuccess': function (file, data, response) {
+                alert(data);
+                var _data = JSON.parse(data);
+                var div = $('#uploaded');
+                div.append($('#imagesTemplate').tmpl(_data));
+
+            },
+            'onUploadStart' : function(file) {
+                $("#file_upload").uploadify("settings", 'formData', {'ProductCode' : $("#ProductCode").val()});
+            }
+        });
+
+        $("#btnImageUpload").click(function () {
+            if ($('#ProductCode').val() != '' && $('#ProductName').val() != '') {
+                $('#file_upload').uploadify('upload', '*');
+
+            }
+            else {
+                alert('Please enter product name and sku first');
+            }
+        });
+
+    });
+ 
+    
+    function deleteImage(_id,_this)
+    {
+        $.ajax({
+            type: "POST",
+            url: "/Product/DeleteImage",
+            data: {Id:_id},
+            datatype: "json",
+            success: function (data) {
+                //$('#result').html(data);
+                if(data==1){
+                    $(_this).closest('tr').remove();
+                    alert('record deleted successfully');
+                }
+            }
+        });
+    }
+    function updateImage(_id)
+    { 
+        $.ajax({
+            type: "POST",
+            url: "/Product/UpdateImages",
+            data: {ID:_id,Name:$('#txtName'+_id).val()},
+            datatype: "json",
+            success: function (data) {
+                //$('#result').html(data);
+                alert('record saved successfully');
+            }
+        });
+      
+    }
+    </script>
+
+<script id="imagesTemplate" type="text/html">
+    <tr>
+        <td style="display:none">${ID}</td>
+        <td>
+            <img src='${ImageURL}' alt='Uploaded Image' style="width:200px;height:200px" />
+        </td>
+        <td style="vertical-align:top"><input type="text" id="txtName${ID}" value="${Name}" /></td>
+        <td style="vertical-align:top">
+            <input type="button" value="[X]" onclick='deleteImage(${ID},this)' />&nbsp;
+            <input type="button" value="Update" onclick='updateImage(${ID})' />
+        </td>
+    </tr>
+ </script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#file_uploadVideos').uploadify({
+            'swf': "@Url.Content("~/Content/UploadifyContent/uploadify.swf")",
+            'cancelImg': "@Url.Content("~/Content/UploadifyContent/uploadify-cancel.png")",
+            'buttonText' : 'Select videos',
+            'fileExt': '*.jpg;*.gif;*.png;*.mp4;*.mp3;*.avi;*.wmv;*.flv;',
+            'multi': true,
+            'auto': true,
+            'sizeLimit': 999999999,
+            'uploader': "@Url.Action("UploadVideo", "Product")",
+            'onUploadSuccess': function (file, data, response) {
+                    
+                var _data = JSON.parse(data);
+                var div = $('#uploadedVideos');
+                div.append($('#videosTemplate').tmpl(_data));
+
+            },
+            'onUploadStart' : function(file) {
+                $("#file_uploadVideos").uploadify("settings", 'formData', {'ProductCode' : $("#ProductCode").val()});
+            }
+        });
+
+        $("#btnVideosUpload").click(function () {
+            if ($('#ProductCode').val() != '' && $('#ProductName').val() != '') {
+                $('#file_uploadVideos').uploadify('upload', '*');
+
+            }
+            else {
+                alert('Please enter product name and sku first');
+            }
+        });
+
+    });
+ 
+    
+    function deleteVideo(_id,_this)
+    {
+      
+        $.ajax({
+            type: "POST",
+            url: "/Product/DeleteVideo",
+            data: {Id:_id},
+            datatype: "json",
+            success: function (data) {
+                //$('#result').html(data);
+                if(data==1){
+                    $(_this).closest('tr').remove();
+                    alert('record deleted successfully');
+                }
+            }
+        });
+    }
+    function updateVideo(_id)
+    { 
+        $.ajax({
+            type: "POST",
+            url: "/Product/UpdateVideo",
+            data: {ID:_id,Name:$('#txtVName'+_id).val()},
+            datatype: "json",
+            success: function (data) {
+                //$('#result').html(data);
+                alert('record saved successfully');
+            }
+        });
+      
+    }
+    </script>
+
+<script id="videosTemplate" type="text/html">
+    <tr>
+        <td style="display:none">${ID}</td>
+        <td>
+           @* <img src='${ImageURL}' alt='Uploaded Image' style="width:200px;height:200px" />*@
+             <video width="320" height="240" controls>
+                                    <source src=${VideoURL} type="video/mp4">
+                                   @* <source src="movie.ogg" type="video/ogg">*@
+                                    Your browser does not support the video tag.
+                                </video>
+        </td>
+        <td style="vertical-align:top"><input type="text" id="txtVName${ID}" value="${Name}" /></td>
+        <td style="vertical-align:top">
+            <input type="button" value="[X]" onclick='deleteVideo(${ID},this)' />&nbsp;
+            <input type="button" value="Update" onclick='updateVideo(${ID})' />
+        </td>
+    </tr>
+ </script>

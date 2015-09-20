@@ -1,0 +1,47 @@
+﻿
+ //-Generic-Repository help link
+    //http://www.codeproject.com/Articles/640294/Learning-MVC-Part-Generic-Repository-Pattern-in
+    /// <summary>Code-First-Migrations
+    /// http://www.dotnet-tricks.com/Tutorial/entityframework/R54K181213-Understanding-Entity-Framework-Code-First-Migrations.html
+    /// </summary>
+
+---Database Migrations
+PM> Enable-Migrations
+No packages installed.
+The EntityFramework package is not installed on project 'TestAPI'.
+PM> Enable-Migrations
+More than one context type was found in the assembly 'GenericRepository'.
+To enable migrations for GenericRepository.GenericRepository.MVCEntities, use Enable-Migrations -ContextTypeName GenericRepository.GenericRepository.MVCEntities.
+To enable migrations for GenericRepository.Models.UsersContext, use Enable-Migrations -ContextTypeName GenericRepository.Models.UsersContext.
+PM> Enable-Migrations MVCEntities
+Enable-Migrations : A positional parameter cannot be found that accepts argument 'MVCEntities'.
+At line:1 char:1
++ Enable-Migrations MVCEntities
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Enable-Migrations], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Enable-Migrations
+ 
+PM> Enable-Migrations
+
+Code First Migrations enabled for project GenericRepository.
+PM> Enable-Migrations
+Code First Migrations enabled for project GenericRepository.
+PM> Add-Migration 'Initial'
+Scaffolding migration 'Initial'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration 201403201131237_Initial' again.
+PM> Update-Database
+
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying code-based migrations: [201403201131237_Initial].
+Applying code-based migration: 201403201131237_Initial.
+Running Seed method.
+PM> Add-Migration 'Initial'
+Scaffolding migration 'Initial'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration 201403201152351_Initial1' again.
+PM> Update-Database
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Applying code-based migrations: [201403201152351_Initial1].
+Applying code-based migration: 201403201152351_Initial1.
+Running Seed method.
+PM> Update-Database
+
